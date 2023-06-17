@@ -2,9 +2,10 @@
 setwd("C:/Mi unidad/Analisis/DEG")
 
 #Then call all the libraries from the RTCGA package. They allows us to download and integrate the variety and volume of TCGA data.
-library(TCGAbiolinks)
-library(RTCGA)
-library(RTCGA.rnaseq)
+library("TCGAbiolinks")
+library("RTCGA")
+library("RTCGA.clinical")
+llibrary("SummarizedExperiment")
 
 #If you don't have them already installed you must do it using the BiocManager. (https://rtcga.github.io/RTCGA)
 if (!require("BiocManager", quietly = TRUE))
@@ -16,25 +17,63 @@ library(limma)
 library(edgeR)
 
 #Last but not least, the libraries for the manipulation of the data
-library(tidyr)
-library(ggplot2)
-library(dplyr)
+library("tidyverse") #contain tidyr, ggplot2 and dplyr, among others
 
 #Download the RNAseq
-secuencias<-SKCM.rnaseq # I use the SKCM project, you may use BRCA or breast cancer or for MMRF bone marrow, etc.
-secuencias<-secuencias%>%mutate(bcr_patient_barcode = substr(bcr_patient_barcode, 1, 12)) # I use the first 12 characters for the patient ID
-a<-as.data.frame(colnames(secuencias)) # As you may see, colnames of secuencias are not only the GENE SYMBOL, so I make a tiny data frame to obtain de GENE SYMBOLS.
-a<-as.data.frame(a[-1,])
-colnames(a)<-c("SYMBOL")
-a <- separate(data = a, col = SYMBOL, into= c("SYMBOL","extra"),sep = "\\|", convert=FALSE, extra="drop",fill="left")
-a$extra<-NULL
-colnames(secuencias)<-a$SYMBOL
-write.table(secuencias, "Secuencias.txt") # I recommend to save the secuencias file to not have to download the data set again. Then I call this archive.
-#-----------
+query.exp <- GDCquery(
+  project = "TCGA-SKCM", # I use the SKCM project, you may use BRCA or breast cancer or for MMRF bone marrow, etc.
+  data.category = "Transcriptome Profiling",
+  data.type = "Gene Expression Quantification",
+  workflow.type = "STAR - Counts") # For raw counts
 
-# If we end the sesion, we may import Dataset:
-secuencias <- read.csv("C:/Mi unidad/Analisis/DEG/Secuencias.txt", row.names=1, sep="")
-#-----------
+GDCdownload(
+  query = query.exp,
+  files.per.chunk = 100)
+
+skcm.exp <- GDCprepare(
+  query = query.exp,
+  save = TRUE,
+  save.filename = "skcmExp.rda")
+
+rnaseq <- assay(skcm.exp)
+rnaseq <- rnaseq[which(!duplicated(rownames(rnaseq))),]   
+write.table(rnaseq, "raw counts.txt") # To save the data set
+
+# Manipulate an clean the data set
+# - Mutate the ids 
+id<-as.data.frame(colnames(rnaseq))
+colnames(id)<-c("bcr_patient_barcode")
+id<-id%>%mutate(bcr_patient_barcode = substr(bcr_patient_barcode, 1, 12))
+colnames(rnaseq)<-id$bcr_patient_barcode
+
+# - Depending on the package you may need ENTREZ, GENE SYMBOL or ENSEMBL 
+library(org.Hs.eg.db) # To acces to all the gene notations
+hs <- org.Hs.eg.db 
+my.symbols <- c(rnaseq$ENSEMBL)
+IDS<-select(hs, 
+            keys = my.symbols,
+            columns = c("ENSEMBL", "SYMBOL","ENTREZID"),
+            keytype = "ENSEMBL")
+IDS<-na.omit(IDS)
+rnaseq<-merge(rnaseq,IDS,by="ENSEMBL")
+write.table(rnaseq,"para edgeR.txt")
+
+# - Clinical information
+clinica<-as.data.frame(SKCM.clinical)
+clinica$patient.bcr_patient_barcode<-toupper(clinica$patient.bcr_patient_barcode) 
+colnames(id)<-c("patient.bcr_patient_barcode")
+x<-merge(clinica,id,by="patient.bcr_patient_barcode")
+x<-x[,c(1,9,11,13,16,28,30,31,438,439,448,449,450,770,775,778,779,780,785,917,935,939,940,941,944,945,846,949,956,964,1060,1867)]
+write.table(x,"clinical information.txt")
+
+# - Categorize according to Vav1,2 y 3 expression
+phenotype<-as.data.frame(rnaseq[rnaseq$SYMBOL=="VAV1",])
+phenotype[2,]<-rnaseq[rnaseq$SYMBOL=="VAV2",]
+phenotype[3,]<-rnaseq[rnaseq$SYMBOL=="VAV3",]
+rownames(phenotype)<-phenotype$SYMBOL
+phenotype[,1]<-NULL # to remove the first column, the ENSEMBL
+phenotype[,474:475]<-NULL # to remove the first column, the SYMBOL and ENTREZID
+phenotipe<-cpm(phenotipe)
 
 # To perform the DEG analysis you should order the patients according to the expression of your protein:
 secuencias <- secuencias[order(secuencias$VAV3),] # In my case I study VAV3.
