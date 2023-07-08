@@ -1,3 +1,3 @@
-# DEG-analysis
-DEG analysis for TCGA-SKCM data set.  
-This is an easy step-by-step to create a differential expression analysis using an RNAseq data set from de TCGA database. I'm using the data from the TCGA-SKCM project.
+# Análisis de expresión diferencial de genes (DEG)
+Se utilizó el data set del proyecto TCGA-SKCM. Se puede acceder a la información en: https://portal.gdc.cancer.gov/exploration?facetTab=cases  
+Se muestra una guíá paso por paso para acceder, manipular, limpiar y procesar la información de RNAseq de personas con melanoma cutáneo. 
