@@ -1,33 +1,41 @@
 Setting your working directory:  
-´´´R  
+```R
 setwd("C:/Mi unidad/Analisis/DEG")
-´´´
-#Then call all the libraries from the RTCGA package. They allows us to download and integrate the variety and volume of TCGA data.
+```
+# Libraries. 
+## From the RTCGA package  
+_This libraries allows us to download and integrate the variety and volume of TCGA data._
+```R
 library("TCGAbiolinks")
 library("RTCGA")
 library("RTCGA.clinical")
 llibrary("SummarizedExperiment")
-
-#If you don't have them already installed you must do it using the BiocManager. (https://rtcga.github.io/RTCGA)
+```
+## _If you don't have them already installed you must do it using the BiocManager. For more information you can visit this [site](https://rtcga.github.io/RTCGA)_
+```R
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("RTCGA")
-
-#Then call the packages for the DEG analysis. I'm using edgeR which also needs limma
-library(limma)
-library(edgeR)
-
-#Last but not least, the libraries for the manipulation of the data
-library("tidyverse") #contain tidyr, ggplot2 and dplyr, among others
-
-# - Acces to the clinical information
+```
+## _Then call the packages for the DEG analysis. I'm using edgeR which also needs limma_
+```R
+library("limma")
+library("edgeR")
+```
+## _Last but not least, the libraries for the manipulation of the data_
+```R
+library("tidyverse") # contains tidyr, ggplot2 and dplyr, among others
+```
+# Acces to the clinical information
+```R
 clinica<-as.data.frame(SKCM.clinical)
-clinica$bcr_patient_barcode<-toupper(clinica$patient.bcr_patient_barcode) 
-id<-as.data.frame(clinica$bcr_patient_barcode)
-x<-x[,c(1,9,11,13,16,28,30,31,438,439,448,449,450,770,775,778,779,780,785,917,935,939,940,941,944,945,846,949,956,964,1060,1867)]
-write.table(x,"clinical information.txt")
-
-#Download the RNAseq
+clinica$bcr_patient_barcode<-toupper(clinica$patient.bcr_patient_barcode) # to change the format of the id
+id<-as.data.frame(clinica$bcr_patient_barcode) # exrtacting the id to an object that will be used later
+x<-clinica[,c(1,9,11,13,16,28,30,31,438,439,448,449,450,770,775,778,779,780,785,917,935,939,940,941,944,945,846,949,956,964,1060,1867)] # selecting the clinical information of my interest
+write.table(x,"clinical information.txt") # saving the data
+```
+# Query and download the RNAseq
+```R
 query.exp <- GDCquery(
   project = "TCGA-SKCM", # I use the SKCM project, you may use BRCA or breast cancer or for MMRF bone marrow, etc.
   data.category = "Transcriptome Profiling",
@@ -42,25 +50,31 @@ skcm.exp <- GDCprepare(
   query = query.exp,
   save = TRUE,
   save.filename = "skcmExp.rda")
-
+```
+_Reading the skcm.rda file_
+```R
 rnaseq <- assay(skcm.exp)
-rnaseq <- rnaseq[which(!duplicated(rownames(rnaseq))),]   
+rnaseq <- rnaseq[which(!duplicated(rownames(rnaseq))),]   # to eliminate the duplicated rows
 write.table(rnaseq, "raw counts.txt") # To save the data set
-
+```
 # Manipulate an clean the data set
-# - Mutate the ids 
-id2<-as.data.frame(colnames(rnaseq))
-colnames(id2)<-c("bcr_patient_barcode")
-id2<-id%>%mutate(bcr_patient_barcode = substr(bcr_patient_barcode, 1, 12))
-colnames(rnaseq)<-id2$bcr_patient_barcode
-
-# - Select according to the clinical informataion available
-rnaseq<-select(rnaseq, by=c(x$id))
+## - Mutate the ids 
+```R
+auxiliar_id<-as.data.frame(colnames(rnaseq))
+colnames(auxiliar_id)<-c("bcr_patient_barcode")
+auxiliar_id<-auxiliar_id%>%mutate(bcr_patient_barcode = substr(bcr_patient_barcode, 1, 12))
+colnames(rnaseq)<-auxiliar_id$bcr_patient_barcode
+```
+## - Select according to the clinical informataion available
+```
+rnaseq<-select(rnaseq, by=c(x$id)) # remember the id object generated above
 CPM<-rnaseq[,-1] # eliminate the ENSEMBL column and save the CPM for later
-id3<-as.data.frame(colnmaes(rnaseq))
-
-# - Depending on the package you may need ENTREZ, GENE SYMBOL or ENSEMBL 
-library(org.Hs.eg.db) # To acces to all the gene notations
+auxiliar_id<-as.data.frame(colnmaes(rnaseq))
+```
+## - Add the ENTREZ, GENE SYMBOL or ENSEMBL gene ID  
+_Depending on the package used, it may need differet gene notations_  
+```
+library("org.Hs.eg.db") # To acces to all the gene notations
 hs <- org.Hs.eg.db 
 my.symbols <- c(rnaseq$ENSEMBL)
 IDS<-select(hs, 
@@ -69,8 +83,9 @@ IDS<-select(hs,
             keytype = "ENSEMBL")
 IDS<-na.omit(IDS)
 rnaseq<-merge(rnaseq,IDS,by="ENSEMBL")
-
-# - Survival analysis and cutpoints
+```
+# Survival analysis 
+ cutpoints
 VAVs_SKCM.surv<-survivalTCGA(SKCM.clinical)
 colnames(VAVs_SKCM.surv)<-c("times","ID","status")
 CPM<-cpm(CPM)
