@@ -1,4 +1,4 @@
-Setting your working directory:
+Setting your working directory:  
 ´´´R
 setwd("C:/Mi unidad/Analisis/DEG")
 ´´´
