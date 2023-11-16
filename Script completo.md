@@ -85,15 +85,19 @@ IDS<-na.omit(IDS)
 rnaseq<-merge(rnaseq,IDS,by="ENSEMBL")
 ```
 # Survival analysis 
- cutpoints
-VAVs_SKCM.surv<-survivalTCGA(SKCM.clinical)
+## - Prepare the data
+```R
+VAVs_SKCM.surv<-survivalTCGA(SKCM.clinical) # acces to survival status
 colnames(VAVs_SKCM.surv)<-c("times","ID","status")
-CPM<-cpm(CPM)
+CPM<-cpm(CPM) # here you can use FPKM, CPM, TMM.
 CPM<-cbind(rnaseq$SYMBOL,CPM)
 phenotype<-t(rbind(CPM[CPM$SYMBOL=="VAV1",],CPM[CPM$SYMBOL=="VAV2",],CPM[CPM$SYMBOL=="VAV3",]))
 phenotype<-cbind(id3,phenotype)
 colnames(phenotype)<-c("ID","VAV1","VAV2,"VAV3)
 VAVs_SKCM.surv_rnaseq<- VAVs_SKCM.surv %>% left_join(CPM,by = "ID")
+```
+## - Select the cutpoints
+```R
 VAVs_SKCM.surv_rnaseq.cut<-surv_cutpoint(
   VAVs_SKCM.surv_rnaseq,
   time = "times",
@@ -101,8 +105,10 @@ VAVs_SKCM.surv_rnaseq.cut<-surv_cutpoint(
   variables = c("VAV1","VAV2", "VAV3")
 )
 summary(VAVs_SKCM.surv_rnaseq.cut)
-
-library(survival)
+```
+## - Fit and graph the KM
+```R
+library("survival")
 fit <- survfit(Surv(times, status) ~ Vav*,
                data = VAVs_SKCM.surv_rnaseq.cat)
 ggsurvplot(
@@ -118,14 +124,16 @@ ggsurvplot(
   legend.title = "Expression",
   risk.table.y.text = FALSE,                          
 )
-
-
+```
 # Categorize according to Vav1,2 y 3 expression
+```R
 phenotype$PhenoV1<-ifelse(phenotype$VAV1<7.717641,"Low","High")
 phenotype$PhenoV2<-ifelse(phenotype$VAV2<57.475259,"Low","High")
 phenotype$PhenoV3<-ifelse(phenotype$VAV3<9.791567,"Low","High")
-
-#The DEG itself (when you see a *, means you decide what Vav, 1-3)
+```
+# The DEG itself  
+_when you see a *, means you decide what Vav, 1-3_
+```R
 y <- DGEList(counts=CPM[,-1],group=c(phenotype$PhenoV*) # Here you'll be creating the DGElist object.
 keep <- filterByExpr(y) # In this step, the edgeR algorithm will be keeping the rows that are 'worthwhile' keeping (doesn't have too many zeros).
 y <- y[keep,,keep.lib.sizes=FALSE]
@@ -143,8 +151,9 @@ df_etV*$Expression = ifelse(df_etV*$FDR < 0.01 & abs(df_etV*$logFC) >= 1,
                                'Stable') # I add a column with the expression for furhter use.
 df_etV*$Genes = rownames(df_etV*) # Prepare for saving the data.
 write.table(df_etV*, "Exact test (Vav*).txt") 
-
-#Performing the VULCANO PLOT to visualize de Genes and its expression
+```
+# VULCANO PLOT to visualize the Genes and its expression
+```R
 plot <- ggplot(data = df_etV*, 
                aes(x = logFC, 
                    y = -log10(FDR), 
@@ -163,8 +172,10 @@ plot <- ggplot(data = df_etV*,
         legend.position="right",
         legend.title = element_blank())
 plot
-
-#- Venn Diagram (Shown for comon, then repeat for Up & Down)
+```
+# Venn Diagram  
+_Shown for common, then repeat for Up & Down_
+```R
 library("ggVennDiagram")
 gene_list <- list(VAV1 = c(subset(df_etV1$Gene,df_etV1$Expression!="Stable")),
                   VAV2 = c(subset(df_etV2$Gene,df_etV2$Expression!="Stable")),
@@ -173,12 +184,15 @@ p1 <- ggVennDiagram(gene_list, label_alpha = 0,
                     category.names = c("VAV1","VAV2","VAV3"))
 p1
 comungenes<-intersect(VAV1,intersect(VAV2,VAV3))#repeat fo Up & Down
-                       
-# To perform the ORA 
+```                       
+# ORA 
+_Libraries_
+```R
 library(ReactomePA)
 library(enrichplot)
-
+```
 ## Creating the new data
+```R
 hs <- org.Hs.eg.db
 Exact_test_Vav*<-subset(df_et,df_et$Expression!="Stable") # I'll be only using the up and down DEGs.
 my.symbols <- c(Exact_test_Vav*$Genes) # The string with the genes names to map with ENTREZ
@@ -188,5 +202,5 @@ b<-na.omit(IDS) # I've never had na but, just to make sure.
                      
 x <- enrichPathway(gene=names_ids,pvalueCutoff=0.05, readable=T)
 dotplot(x, showCategory=10, title="DotPlot Vav*",font.size=8) # You can also create a CNet Plot and Bar Plot
-
+```
 #That's all. I hope you'll find it usefull.
