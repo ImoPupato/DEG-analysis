@@ -1,6 +1,7 @@
-#First set your working directory:
+Setting your working directory:
+´´´R
 setwd("C:/Mi unidad/Analisis/DEG")
-
+´´´
 #Then call all the libraries from the RTCGA package. They allows us to download and integrate the variety and volume of TCGA data.
 library("TCGAbiolinks")
 library("RTCGA")
