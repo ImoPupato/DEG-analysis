@@ -3,7 +3,7 @@ Setting your working directory:
 setwd("C:/Mi unidad/Analisis/DEG")
 ```
 # Libraries. 
-## From the RTCGA package  
+**From the RTCGA package**  
 _This libraries allows us to download and integrate the variety and volume of TCGA data._
 ```R
 library("TCGAbiolinks")
@@ -11,28 +11,27 @@ library("RTCGA")
 library("RTCGA.clinical")
 llibrary("SummarizedExperiment")
 ```
-## _If you don't have them already installed you must do it using the BiocManager. For more information you can visit this [site](https://rtcga.github.io/RTCGA)_
+ _If you don't have them already installed you must do it using the BiocManager. For more information you can visit this [site](https://rtcga.github.io/RTCGA)_
 ```R
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("RTCGA")
 ```
-## _Then call the packages for the DEG analysis. I'm using edgeR which also needs limma_
+_Then call the packages for the DEG analysis. I'm using edgeR which also needs limma_
 ```R
 library("limma")
 library("edgeR")
 ```
-## _Last but not least, the libraries for the manipulation of the data_
+_Last but not least, the libraries for the manipulation of the data_
 ```R
 library("tidyverse") # contains tidyr, ggplot2 and dplyr, among others
 ```
-# Acces to the clinical information
+# Acces to the clinical information.
 ```R
 clinica<-as.data.frame(SKCM.clinical)
 clinica$bcr_patient_barcode<-toupper(clinica$patient.bcr_patient_barcode) # to change the format of the id
 id<-as.data.frame(clinica$bcr_patient_barcode) # exrtacting the id to an object that will be used later
-x<-clinica[,c(1,9,11,13,16,28,30,31,438,439,448,449,450,770,775,778,779,780,785,917,935,939,940,941,944,945,846,949,956,964,1060,1867)] # selecting the clinical information of my interest
-write.table(x,"clinical information.txt") # saving the data
+write.table(clinica,"clinical information.txt") # saving the data
 ```
 # Query and download the RNAseq
 ```R
@@ -92,7 +91,7 @@ colnames(VAVs_SKCM.surv)<-c("times","ID","status")
 CPM<-cpm(CPM) # here you can use FPKM, CPM, TMM.
 CPM<-cbind(rnaseq$SYMBOL,CPM)
 phenotype<-t(rbind(CPM[CPM$SYMBOL=="VAV1",],CPM[CPM$SYMBOL=="VAV2",],CPM[CPM$SYMBOL=="VAV3",]))
-phenotype<-cbind(id3,phenotype)
+phenotype<-cbind(auxiliar_id,phenotype)
 colnames(phenotype)<-c("ID","VAV1","VAV2,"VAV3)
 VAVs_SKCM.surv_rnaseq<- VAVs_SKCM.surv %>% left_join(CPM,by = "ID")
 ```
