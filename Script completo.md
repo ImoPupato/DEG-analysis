@@ -19,7 +19,6 @@ BiocManager::install("RTCGA")
 ```
 _Then call the packages for the DEG analysis. I'm using edgeR which also needs limma_
 ```R
-library("limma")
 library("edgeR")
 ```
 _Last but not least, the libraries for the manipulation of the data_
@@ -133,7 +132,7 @@ phenotype$PhenoV3<-ifelse(phenotype$VAV3<9.791567,"Low","High")
 # The DEG itself  
 _when you see a *, means you decide what Vav, 1-3_
 ```R
-y <- DGEList(counts=CPM[,-1],group=c(phenotype$PhenoV*) # Here you'll be creating the DGElist object.
+y <- DGEList(counts=rnaseq[,-1],group=c(phenotype$PhenoV*) # Here you'll be creating the DGElist object.
 keep <- filterByExpr(y) # In this step, the edgeR algorithm will be keeping the rows that are 'worthwhile' keeping (doesn't have too many zeros).
 y <- y[keep,,keep.lib.sizes=FALSE]
 y <- calcNormFactors(y)
