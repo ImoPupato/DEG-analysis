@@ -26,7 +26,7 @@ _Last but not least, the libraries for the manipulation of the data and other an
 library("tidyverse") # contains tidyr, ggplot2 and dplyr, among others
 library("survival") # for the Survival analysis
 library("survminer") # for the cutpoints values
-library("org.Hs.eg.db") # To acces to all the gene notations
+library("org.Hs.eg.db") # To access to all the gene notations
 library("ReactomePA") # for the ORA 
 library("enrichplot") # for the enrichment analysis
 library("ggVennDiagram") # for the Venns diagramas
