@@ -4,7 +4,7 @@ setwd("C:/Mi unidad/Analisis/DEG")
 ```
 # Libraries. 
 **From the RTCGA package**  
-_This libraries allows us to download and integrate the variety and volume of TCGA data._
+_This libraries allows us to download and integrate the variety and volume of TCGA._
 ```R
 library("TCGAbiolinks")
 library("RTCGA")
@@ -17,19 +17,22 @@ if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("RTCGA")
 ```
-_Then call the packages for the DEG analysis. I'm using edgeR which also needs limma_
+_Then call the packages for the DEG analysis. I'm using edgeR_
 ```R
 library("edgeR")
 ```
-_Last but not least, the libraries for the manipulation of the data_
+_Last but not least, the libraries for the manipulation of the data and other analysis_
 ```R
 library("tidyverse") # contains tidyr, ggplot2 and dplyr, among others
+library("survival") # for the Survival analysis
+library("survminer") # for the cutpoints values
+library("org.Hs.eg.db") # To acces to all the gene notations
 ```
-# Acces to the clinical information.
+# Access to the clinical information.
 ```R
 clinica<-as.data.frame(SKCM.clinical)
 clinica$bcr_patient_barcode<-toupper(clinica$patient.bcr_patient_barcode) # to change the format of the id
-id<-as.data.frame(clinica$bcr_patient_barcode) # exrtacting the id to an object that will be used later
+id<-as.data.frame(clinica$bcr_patient_barcode) # extracting the id to an object that will be used later
 write.table(clinica,"clinical information.txt") # saving the data
 ```
 # Query and download the RNAseq
@@ -72,11 +75,8 @@ auxiliar_id<-as.data.frame(colnmaes(rnaseq))
 ## - Add the ENTREZ, GENE SYMBOL or ENSEMBL gene ID  
 _Depending on the package used, it may need differet gene notations_  
 ```
-library("org.Hs.eg.db") # To acces to all the gene notations
-hs <- org.Hs.eg.db 
-my.symbols <- c(rnaseq$ENSEMBL)
-IDS<-select(hs, 
-            keys = my.symbols,
+IDS<-select(org.Hs.eg.db, 
+            keys = c(rnaseq$ENSEMBL),
             columns = c("ENSEMBL", "SYMBOL","ENTREZID"),
             keytype = "ENSEMBL")
 IDS<-na.omit(IDS)
@@ -106,7 +106,6 @@ summary(VAVs_SKCM.surv_rnaseq.cut)
 ```
 ## - Fit and graph the KM
 ```R
-library("survival")
 fit <- survfit(Surv(times, status) ~ Vav*,
                data = VAVs_SKCM.surv_rnaseq.cat)
 ggsurvplot(
@@ -132,7 +131,7 @@ phenotype$PhenoV3<-ifelse(phenotype$VAV3<9.791567,"Low","High")
 # The DEG itself  
 _when you see a *, means you decide what Vav, 1-3_
 ```R
-y <- DGEList(counts=rnaseq[,-1],group=c(phenotype$PhenoV*) # Here you'll be creating the DGElist object.
+y <- DGEList(counts=rnaseq[,-1],group=c(phenotype$PhenoV*) # Here you'll be creating the DGElist object. You should check y[["samples"]]$group to make sure the groups hd been asigned. If not, you can use y[["samples"]]$group<-auxiliar2$phenotype$PhenoV* 
 keep <- filterByExpr(y) # In this step, the edgeR algorithm will be keeping the rows that are 'worthwhile' keeping (doesn't have too many zeros).
 y <- y[keep,,keep.lib.sizes=FALSE]
 y <- calcNormFactors(y)
