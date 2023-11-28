@@ -27,6 +27,9 @@ library("tidyverse") # contains tidyr, ggplot2 and dplyr, among others
 library("survival") # for the Survival analysis
 library("survminer") # for the cutpoints values
 library("org.Hs.eg.db") # To acces to all the gene notations
+library(ReactomePA) # for the ORA 
+library(enrichplot) # for the enrichment analysis
+library("ggVennDiagram") # for the Venns diagramas
 ```
 # Access to the clinical information.
 ```R
@@ -173,7 +176,6 @@ plot
 # Venn Diagram  
 _Shown for common, then repeat for Up & Down_
 ```R
-library("ggVennDiagram")
 gene_list <- list(VAV1 = c(subset(df_etV1$Gene,df_etV1$Expression!="Stable")),
                   VAV2 = c(subset(df_etV2$Gene,df_etV2$Expression!="Stable")),
                   VAV3 = c(subset(df_etV3$Gene,df_etV3$Expression!="Stable")))
@@ -183,21 +185,17 @@ p1
 comungenes<-intersect(VAV1,intersect(VAV2,VAV3))#repeat fo Up & Down
 ```                       
 # ORA 
-_Libraries_
-```R
-library(ReactomePA)
-library(enrichplot)
-```
 ## Creating the new data
 ```R
-hs <- org.Hs.eg.db
 Exact_test_Vav*<-subset(df_et,df_et$Expression!="Stable") # I'll be only using the up and down DEGs.
-my.symbols <- c(Exact_test_Vav*$Genes) # The string with the genes names to map with ENTREZ
-IDS<-AnnotationDbi::select(org.Hs.eg.db, keys=my.symbols, columns=c("SYMBOL", "ENTREZID"), keytype="SYMBOL")
+IDS<-AnnotationDbi::select(org.Hs.eg.db,
+                           keys= c(Exact_test_Vav*$Genes), # The string with the genes names to map with ENTREZ
+                           columns=c("SYMBOL", "ENTREZID"),
+                           keytype="SYMBOL")
 names_ids<-IDS$ENTREZID
 b<-na.omit(IDS) # I've never had na but, just to make sure.
                      
 x <- enrichPathway(gene=names_ids,pvalueCutoff=0.05, readable=T)
 dotplot(x, showCategory=10, title="DotPlot Vav*",font.size=8) # You can also create a CNet Plot and Bar Plot
 ```
-#That's all. I hope you'll find it usefull.
+# That's all. I hope you'll find it usefull.
