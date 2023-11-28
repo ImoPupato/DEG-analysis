@@ -195,7 +195,7 @@ IDS<-AnnotationDbi::select(org.Hs.eg.db,
 names_ids<-IDS$ENTREZID
 b<-na.omit(IDS) # I've never had na but, just to make sure.
                      
-x <- enrichPathway(gene=names_ids,pvalueCutoff=0.05, readable=T)
+x <- enrichPathway(gene=c(b$ENTREZID),pvalueCutoff=0.05, readable=T)
 dotplot(x, showCategory=10, title="DotPlot Vav*",font.size=8) # You can also create a CNet Plot and Bar Plot
 ```
 # That's all. I hope you'll find it usefull.
