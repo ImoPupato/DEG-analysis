@@ -38,3 +38,14 @@ Los valores están en *cuentas por millón* (cpm)
 
 </div>  
 
+Luego, calculamos la mediana (valor de corte) para generar cada grupo de contraste. 
+
+<div align="center">
+	
+|Grupo|VAV1| VAV2|VAV3| SNCA|SNCB|SNCG|
+|:-----------:|:--------:|:---------:|:-----------:|:----------:|:---------:|:----------:|
+|Metástasis | 10.19  | 28.18 | 10.34 | 66.52 | 0.47 | 1.62 | 
+|Primario | 4.24 | 22.09 | 7.17 | 92.93 | 0.57 | 1.50 | 
+
+</div>  
+Tomando en cuenta los valores de corte, los grupos quedaron de la siguiente manera:
