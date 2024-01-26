@@ -1,6 +1,7 @@
-Nos propusimos realizar un análisis de la expresión de ciertos genes de nuestro interés en personas con Melanoma Cutánemo. Utilizando la información disponible en el proyecto TCGA-SKCM, realizamos los pasos que a continuación se detallan para realizar las comparaciones considerando separa a las muestras según sean provenientes
-Ejemplo del código utilizado para el análisis de metástasis o tumos primario. Vale aclarar que en todos los casos se trabajó con RNASeq y las personas todas fueron diagnosticadas con melanoma cutáneo como tumor primario.  
+Nos propusimos realizar un análisis de la expresión de ciertos genes de nuestro interés en personas con Melanoma Cutánemo. Utilizando la información disponible en el proyecto TCGA-SKCM, realizamos los pasos que a continuación se detallan para realizar las comparaciones considerando separa a las muestras según sean provenientes Vale aclarar que en todos los casos se trabajó con RNASeq y las personas todas fueron diagnosticadas con melanoma cutáneo como tumor primario.  
 Primero decidimos comparar las expresiones (RNASeq) de las familias Vav y Sinucleina en muestras provenientes de metástasis y tumor primario.  
+De las 460 muestras 101 corresponden a tumores primarios y 359 a metastásicos.  
+
 Ejemplo del código utilizado para la comparación
 ```R
 t.test(fenotipos$VAV1.cpm[
