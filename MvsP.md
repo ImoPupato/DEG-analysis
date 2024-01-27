@@ -60,24 +60,24 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 </div> 
 
 Se generaron las siguientes matrices para GSEA:
-- Matriz de expresión análisis Metástasis vs Primario
-- Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral metastásico
-- Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral primario
+- [Matriz de expresión análisis Completo o MvsP](https://drive.google.com/file/d/1TE0wsNRsJk0JiLgzSH_G1ka6et60kKB_/view?usp=drive_link)
+- [Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral metastásico](https://drive.google.com/file/d/1_ZK_z0lGFaCkXZgYe6DH6b2WYyKztE6t/view?usp=drive_link)
+- [Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral primario](https://drive.google.com/file/d/1_H80pHoUc4c9PdDOTFMcMm9LGmWRuTSx/view?usp=drive_link)
 
 Los fenotipos de contraste son:
-- Metástasis vs Primario
-- Expresión de Vav1: Completo, Metastasis, Primario
-- Expresión de Vav2: Completo, Metastasis, Primario
-- Expresión de Vav3: Completo, Metastasis, Primario
-- Expresión de SNCA: Completo, Metastasis, Primario
-- Expresión de SNCB: Completo, Metastasis, Primario
-- Expresión de SNCG: Completo, Metastasis, Primario
+- [Metástasis vs Primario](https://drive.google.com/file/d/1TE0wsNRsJk0JiLgzSH_G1ka6et60kKB_/view?usp=drive_link)
+- Expresión de Vav1: [Completo](https://drive.google.com/file/d/1_igTwl-hgYfYzTiNlcIN8p61Q8QhQTfb/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/1_aT2Mj34gWdk4tJut97PoR_OxVgspjVb/view?usp=drive_link), [Primario](https://drive.google.com/file/d/1_L1zmKlKLINVPx1EX9WGgWd9SrbAryE9/view?usp=drive_link)
+- Expresión de Vav2: [Completo](https://drive.google.com/file/d/1_jUzpTvgPC3ESDEGV5UL9PONVpAINtHj/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/1_c7ZFpLVxqsdr-JKmUoc9DOObfUDCu5B/view?usp=drive_link), [Primario](https://drive.google.com/file/d/1_X2TNGNE109nRLOFoTqRwTXDqmmKguGo/view?usp=drive_link)
+- Expresión de Vav3: [Completo](https://drive.google.com/file/d/1_mRCUAPjYrvzWccvJwwD5NcpUy87jFYk/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/1_daAS897b7kYBZXkUn19ZaovEgxsrDNL/view?usp=drive_link), [Primario](https://drive.google.com/file/d/1_LGZdctT86jekzC5B--kXM5zMr1qKZ1g/view?usp=drive_link)
+- Expresión de SNCA: [Completo](https://drive.google.com/file/d/1_oCaT0Bgr3j06DU3LTppYxCFuMscZH0K/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/1_dzjdtkNzaw7lMbOY4kSsadKhFKiMCyE/view?usp=drive_link), [Primario](https://drive.google.com/file/d/1_LneeL2rS02Uuz1MEQu-RYlIM-Ht_N6z/view?usp=drive_link)
+- Expresión de SNCB: [Completo](https://drive.google.com/file/d/1_qlTwn2nLClX35w3e_v-xKND5V6-sKvz/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/1_endX2CGNLx0A4nKGFP_eWP9Op4H243s/view?usp=drive_link), [Primario](https://drive.google.com/file/d/1_UAkkxjCGXzOxitAagC12vPVeNrwKPGv/view?usp=drive_link)
+- Expresión de SNCG: [Completo](https://drive.google.com/file/d/1_qsL2sMC2HDmmERVtuaeC29tMoOxDu_B/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/1_ezJTaxVUrLI-UcsrhxcqXNVEF5dgHI3/view?usp=drive_link), [Primario](https://drive.google.com/file/d/1_WFZ50xb8bYjEMWG_xPfoSjmIGn0S5z5/view?usp=drive_link)
   
 Las salidas de GSEA de este análisis están disponibles en:
-- [Metástasis vs Primario](https://github.com/ImoPupato/DEG-analysis/blob/main/MvsP_geneset.rar)
-- Expresión de Vav1: Completo, Metastasis, Primario
-- Expresión de Vav2: Completo, Metastasis, Primario
-- Expresión de Vav3: Completo, Metastasis, Primario
-- Expresión de SNCA: Completo, Metastasis, Primario
-- Expresión de SNCB: Completo, Metastasis, Primario
-- Expresión de SNCG: Completo, Metastasis, Primario
+- [Metástasis vs Primario]()
+- Expresión de Vav1: [Completo](https://drive.google.com/file/d/1_xmQSazX3In7gTSk-GiiCSQovgSzbeX6/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/192uFvj194FxrqMJVtehVyiK9BKR9Fl0h/view?usp=sharing), [Primario](https://drive.google.com/file/d/196rG9jW5C2dLNsPQaKZ0lHXTw0Ryqfte/view?usp=sharing)
+- Expresión de Vav2: [Completo](https://drive.google.com/file/d/1a-Z7Q9TbFefFoFn-WMkO1Dtub_-B_1BN/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/193WkZ8RZMG_E06MKXOIji40OYFCZJz8O/view?usp=sharing), [Primario](https://drive.google.com/file/d/197N6hMANlz0bSG6SmsfFwvDqRhvZ0tQO/view?usp=drive_link)
+- Expresión de Vav3: [Completo](https://drive.google.com/file/d/1_ymrPtvOjzhfz_u5hYsAL0mM9fB6RF7z/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/193Xno3LGx83ax70YP2L_j3S-px7pvqIR/view?usp=sharing), [Primario](https://drive.google.com/file/d/1940Y27GFJ8c0nYGSy90ceW-cANNd213F/view?usp=drive_link)
+- Expresión de SNCA: [Completo](https://drive.google.com/file/d/1a5Zd49GiC-7Tmx6PbFLWr7wJJyCxXvMC/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/191_a_KLDzVxIuZo_U4LEviVpC90601Fu/view?usp=sharing), [Primario](https://drive.google.com/file/d/19631KSQgKSQWgcFkfZjcMHY_sucblhEU/view?usp=drive_link)
+- Expresión de SNCB: [Completo](https://drive.google.com/file/d/1a022aZrwjb9qjcsStb7-v91JzaaYKsuw/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/191MqzDOEF_72bEun1-A8HTcl6V5Glc9G/view?usp=sharing), [Primario](https://drive.google.com/file/d/1967KRZD2NwVzci0as58eiMPe15RtlUqI/view?usp=drive_link)
+- Expresión de SNCG: [Completo](https://drive.google.com/file/d/1a62NceKzJ3jay8NCknTzt8Q0RpfkQiua/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/190D_S5d3R1T0R7XMHVci7CnXQVhB5QnI/view?usp=sharing), [Primario](https://drive.google.com/file/d/196T3oDDSPgtTzFV1zwC4EcIPh26j0sQR/view?usp=drive_link)
