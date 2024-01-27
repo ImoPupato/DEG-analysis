@@ -1,8 +1,9 @@
-Nos propusimos realizar un análisis de la expresión de ciertos genes de nuestro interés en personas con Melanoma Cutánemo. Utilizando la información disponible en el proyecto TCGA-SKCM, realizamos los pasos que a continuación se detallan para realizar las comparaciones considerando separa a las muestras según sean provenientes Vale aclarar que en todos los casos se trabajó con RNASeq y las personas todas fueron diagnosticadas con melanoma cutáneo como tumor primario.  
-Primero decidimos comparar las expresiones (RNASeq) de las familias Vav y Sinucleina en muestras provenientes de metástasis y tumor primario.  
-De las 460 muestras 101 corresponden a tumores primarios y 359 a metastásicos.  
+#### En este apartado nos propusimos realizar un análisis de la expresión de ciertos genes de nuestro interés en personas con Melanoma Cutánemo utilizando la información disponible en el proyecto TCGA-SKCM, diferenciando si provenían de muestras de metástasis o del tumor primario.  
+#### Vale aclarar que en todos los casos se trabajó con RNASeq y las personas todas fueron diagnosticadas con melanoma cutáneo como tumor primario.  
 
-Ejemplo del código utilizado para la comparación
+#### Para comparar las expresiones (RNASeq) de las familias Vav y Sinucleina en muestras provenientes de metástasis y tumor primario, asignamos a cada muestra su proveniencia, siendo 101 correspondendientes a tumores primarios y 359 a metastásicos. Las expresiones fueron convertidas a CPM (*count per million*) con el paquete edgeR.  
+
+##### Ejemplo del código utilizado para la comparación
 ```R
 t.test(fenotipos$VAV1.cpm[
   fenotipos$Type =="Metastasis"],
@@ -10,7 +11,7 @@ t.test(fenotipos$VAV1.cpm[
     fenotipos$Type=="Primario"]
   ,paired = FALSE)
 ```
-Ejemplo de la salida
+##### Ejemplo de la salida
 ```R
 	Welch Two Sample t-test
 data:  fenotipos$VAV1.cpm[fenotipos$Type == "Metastasis"] and fenotipos$VAV1.cpm[fenotipos$Type == "Primario"]
@@ -22,8 +23,8 @@ sample estimates:
 mean of x mean of y 
 17.410673  6.803934
 ```
-**Tabla de resultados**  
-Los valores están en *cuentas por millón* (cpm)
+#### **Tabla de resultados**  
+Los valores de expresión de RNASeq están en *cuentas por millón* (cpm)
 
 <div align="center">
 	
@@ -38,7 +39,7 @@ Los valores están en *cuentas por millón* (cpm)
 
 </div>  
 
-Luego, calculamos la mediana (valor de corte) para generar cada grupo de contraste. 
+Luego, calculamos la mediana (*valor de corte*) para generar cada grupo de contraste. 
 
 <div align="center">
 	
@@ -48,4 +49,12 @@ Luego, calculamos la mediana (valor de corte) para generar cada grupo de contras
 |Primario | 4.24 | 22.09 | 7.17 | 92.93 | 0.57 | 1.50 | 
 
 </div>  
-Tomando en cuenta los valores de corte, los grupos quedaron de la siguiente manera:
+Tomando en cuenta los valores de corte, los grupos quedaron conformados según expresión del Gen:
+<div align="center">
+	
+|Grupo|Alta|Baja|
+|:-----------:|:--------:|:---------:|
+|Metástasis | 180  | 179 |
+|Primario | 51 | 50 |
+
+</div> 
