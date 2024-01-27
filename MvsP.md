@@ -58,3 +58,26 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 |Primario | 51 | 50 |
 
 </div> 
+
+Se generaron las siguientes matrices para GSEA:
+- Matriz de expresión análisis Metástasis vs Primario
+- Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral metastásico
+- Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral primario
+
+Los fenotipos de contraste son:
+- Metástasis vs Primario
+- Expresión de Vav1: Completo, Metastasis, Primario
+- Expresión de Vav2: Completo, Metastasis, Primario
+- Expresión de Vav3: Completo, Metastasis, Primario
+- Expresión de SNCA: Completo, Metastasis, Primario
+- Expresión de SNCB: Completo, Metastasis, Primario
+- Expresión de SNCG: Completo, Metastasis, Primario
+  
+Las salidas de GSEA de este análisis están disponibles en:
+- [Metástasis vs Primario](https://github.com/ImoPupato/DEG-analysis/blob/main/MvsP_geneset.rar)
+- Expresión de Vav1: Completo, Metastasis, Primario
+- Expresión de Vav2: Completo, Metastasis, Primario
+- Expresión de Vav3: Completo, Metastasis, Primario
+- Expresión de SNCA: Completo, Metastasis, Primario
+- Expresión de SNCB: Completo, Metastasis, Primario
+- Expresión de SNCG: Completo, Metastasis, Primario
