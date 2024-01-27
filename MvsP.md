@@ -58,7 +58,8 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 |Primario | 51 | 50 |
 
 </div> 
-
+Para el caso del análisis _completo_ cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
+  
 Se generaron las siguientes matrices para GSEA:
 - [Matriz de expresión análisis Completo o MvsP](https://drive.google.com/file/d/1TE0wsNRsJk0JiLgzSH_G1ka6et60kKB_/view?usp=drive_link)
 - [Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral metastásico](https://drive.google.com/file/d/1_ZK_z0lGFaCkXZgYe6DH6b2WYyKztE6t/view?usp=drive_link)
