@@ -72,14 +72,7 @@ Primero se llevó adelante un análisis de la expresión diferencial para cada c
 - Expresión de SNCG: [Completo](https://drive.google.com/file/d/1CohNMa9hfH1JrycAZat3fPUrlLRldjWv/view?usp=drive_link),[Metastasis](https://drive.google.com/file/d/19Bo3lc3lrY-Vj5-nbOd1VGhbrG4BBhRF/view?usp=drive_link),[Primario](https://drive.google.com/file/d/19Rp0SVsoTL4OBFxsuuaKbJ_vbM3nmVJh/view?usp=drive_link)
 Los parámetros utilizados fueron: LogFC>1 y FDR<0.01.  
 
-Los gráficos se muestran a continuación:  
-![](https://drive.google.com/file/d/1UPIrZcTRg9SWEBhwo_kQb-epV66a_Rjh/view?usp=sharing)
-<img src="https://drive.google.com/file/d/1UPIrZcTRg9SWEBhwo_kQb-epV66a_Rjh/view?usp=sharing">
-
-<div>
-<p style = 'text-align:center;'>
-</p>
-</div>
+Los gráficos de enriquecimiento se encuentran en el siguiente [link](https://drive.google.com/drive/folders/1ENIiLyNCG1wzut2m4cEzzHYxRxlw7JL4?usp=sharing)
 
 En el caso del contraste de expresión alta vs baja de SNCB para el grupo de muestras provenientes de tumores primarios, no se observaron vias eniquecidas por los genes diferencialmente expresados.
 
