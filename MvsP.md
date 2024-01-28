@@ -58,9 +58,33 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 |Primario | 51 | 50 |
 
 </div> 
-Para el caso del análisis _completo_ cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
-  
-Se generaron las siguientes matrices para GSEA:
+Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
+
+#### Se llevaron adelante dos tipos de análisis: ORA y GSEA. 
+#### ORA
+Primero se llevó adelante un análisis de la expresión diferencial para cada contraste, los resultados de los *exact tests* de comparación son los siguientes:
+- [Metástasis vs Primario](https://drive.google.com/file/d/1C4Guj3ZnUNzbCbqUPLPuF3dJgMLkn83N/view?usp=drive_link)
+- Expresión de Vav1: [Completo](https://drive.google.com/file/d/1CIADvX8z7qRZzBCFrVh-b1eSVgJxdLCg/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/19C5vIoan3DWFPivaBssyoBNwVNZlzAz8/view?usp=drive_link), [Primario](https://drive.google.com/file/d/19G1d4nvvGEkTxGfqmB-HXtMOHJ2_9nm_/view?usp=drive_link)
+- Expresión de Vav2: [Completo](https://drive.google.com/file/d/1CJnIBh708jfYfYAEp2ecvF9f9DQ4Hu3W/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/197y1I_elcBIkaAxXii9ueV5IjvXQVqOK/view?usp=drive_link), [Primario](https://drive.google.com/file/d/19IlufgTtkd-ChjXTz9ENxIhezy4ODQdr/view?usp=drive_link)
+- Expresión de Vav3: [Completo](https://drive.google.com/file/d/1ClII0RRga8zBmidsgOYzQGgst2zoXcqe/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/199BoIXRLJUFlVadnbh34NuwPiE3IluG2/view?usp=sharing), [Primario](https://drive.google.com/file/d/19N6iRuVa2MPQHX5W1Ewi_4eNaW4a0Qfa/view?usp=drive_link)
+- Expresión de SNCA: [Completo](https://drive.google.com/file/d/1CRIZYRWOe7NnOh-P7CAExus5by4JwOTw/view?usp=drive_link),[Metastasis](https://drive.google.com/file/d/19Ap6hGRPotYPr6Bz3HcwTzawenqfZdwq/view?usp=drive_link),[Primario](https://drive.google.com/file/d/19KlevtqKbVq2Ozevu8DkI25CLKDRTSaH/view?usp=drive_link)
+- Expresión de SNCB: [Completo](https://drive.google.com/file/d/1CohMTbu61uYgrk_tyx92lh9d8aBkSP3k/view?usp=drive_link),[Metastasis](https://drive.google.com/file/d/19BBj2_gRtg47vOKEX2-1MWBRzUjBQdHz/view?usp=drive_link),[Primario](https://drive.google.com/file/d/19NwmKVOBD6Qf3uuPmLNGROhbGP7oqTsk/view?usp=drive_link)
+- Expresión de SNCG: [Completo](https://drive.google.com/file/d/1CohNMa9hfH1JrycAZat3fPUrlLRldjWv/view?usp=drive_link),[Metastasis](https://drive.google.com/file/d/19Bo3lc3lrY-Vj5-nbOd1VGhbrG4BBhRF/view?usp=drive_link),[Primario](https://drive.google.com/file/d/19Rp0SVsoTL4OBFxsuuaKbJ_vbM3nmVJh/view?usp=drive_link)
+Los parámetros utilizados fueron: LogFC>1 y FDR<0.01.  
+
+Los gráficos se muestran a continuación:  
+![](https://drive.google.com/file/d/1UPIrZcTRg9SWEBhwo_kQb-epV66a_Rjh/view?usp=sharing)
+<img src="https://drive.google.com/file/d/1UPIrZcTRg9SWEBhwo_kQb-epV66a_Rjh/view?usp=sharing">
+
+<div>
+<p style = 'text-align:center;'>
+</p>
+</div>
+
+En el caso del contraste de expresión alta vs baja de SNCB para el grupo de muestras provenientes de tumores primarios, no se observaron vias eniquecidas por los genes diferencialmente expresados.
+
+#### GSEA
+Se generaron las siguientes matrices:
 - [Matriz de expresión análisis Completo o MvsP](https://drive.google.com/file/d/1TE0wsNRsJk0JiLgzSH_G1ka6et60kKB_/view?usp=drive_link)
 - [Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral metastásico](https://drive.google.com/file/d/1_ZK_z0lGFaCkXZgYe6DH6b2WYyKztE6t/view?usp=drive_link)
 - [Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral primario](https://drive.google.com/file/d/1_H80pHoUc4c9PdDOTFMcMm9LGmWRuTSx/view?usp=drive_link)
