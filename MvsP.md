@@ -74,6 +74,7 @@ Los parámetros utilizados fueron: LogFC>1 y FDR<0.01.
 
 Los gráficos de enriquecimiento se encuentran en el siguiente [link](https://drive.google.com/drive/folders/1ENIiLyNCG1wzut2m4cEzzHYxRxlw7JL4?usp=sharing)
 
+  
 En el caso del contraste de expresión alta vs baja de SNCB para el grupo de muestras provenientes de tumores primarios, no se observaron vias eniquecidas por los genes diferencialmente expresados.
 
 #### GSEA
