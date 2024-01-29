@@ -1,7 +1,7 @@
-#### En este apartado nos propusimos realizar un análisis de la expresión de ciertos genes de nuestro interés en personas con Melanoma Cutánemo utilizando la información disponible en el proyecto TCGA-SKCM, diferenciando si provenían de muestras de metástasis o del tumor primario.  
-#### Vale aclarar que en todos los casos se trabajó con RNASeq y las personas todas fueron diagnosticadas con melanoma cutáneo como tumor primario.  
+**En este apartado nos propusimos realizar un análisis de la expresión de ciertos genes de nuestro interés en personas con Melanoma Cutánemo utilizando la información disponible en el proyecto TCGA-SKCM, diferenciando si provenían de muestras de metástasis o del tumor primario**.  
+*Vale aclarar que en todos los casos se trabajó con RNASeq y las personas todas fueron diagnosticadas con melanoma cutáneo como tumor primario*.  
 
-#### Para comparar las expresiones (RNASeq) de las familias Vav y Sinucleina en muestras provenientes de metástasis y tumor primario, asignamos a cada muestra su proveniencia, siendo 101 correspondendientes a tumores primarios y 359 a metastásicos. Las expresiones fueron convertidas a CPM (*count per million*) con el paquete edgeR.  
+**Para comparar las expresiones (RNASeq) de las familias Vav y Sinucleina en muestras provenientes de metástasis y tumor primario, asignamos a cada muestra su proveniencia, siendo 101 correspondendientes a tumores primarios y 359 a metastásicos. Las expresiones fueron convertidas a CPM (*count per million*) con el paquete edgeR**.  
 
 ##### Ejemplo del código utilizado para la comparación
 ```R
@@ -60,7 +60,7 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 </div> 
 Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
 
-#### Se llevaron adelante dos tipos de análisis: ORA y GSEA. 
+**Se llevaron adelante dos tipos de análisis: ORA y GSEA**. 
 #### ORA
 Primero se llevó adelante un análisis de la expresión diferencial para cada contraste, los resultados de los *exact tests* de comparación son los siguientes:
 - [Metástasis vs Primario](https://drive.google.com/file/d/1C4Guj3ZnUNzbCbqUPLPuF3dJgMLkn83N/view?usp=drive_link)
@@ -94,12 +94,12 @@ Los fenotipos de contraste son:
   
 Las salidas de GSEA de este análisis están disponibles en:
 - [Metástasis vs Primario]()
-- Expresión de Vav1: [Completo](https://drive.google.com/file/d/1_xmQSazX3In7gTSk-GiiCSQovgSzbeX6/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/192uFvj194FxrqMJVtehVyiK9BKR9Fl0h/view?usp=sharing), [Primario](https://drive.google.com/file/d/196rG9jW5C2dLNsPQaKZ0lHXTw0Ryqfte/view?usp=sharing)
-- Expresión de Vav2: [Completo](https://drive.google.com/file/d/1a-Z7Q9TbFefFoFn-WMkO1Dtub_-B_1BN/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/193WkZ8RZMG_E06MKXOIji40OYFCZJz8O/view?usp=sharing), [Primario](https://drive.google.com/file/d/197N6hMANlz0bSG6SmsfFwvDqRhvZ0tQO/view?usp=drive_link)
-- Expresión de Vav3: [Completo](https://drive.google.com/file/d/1_ymrPtvOjzhfz_u5hYsAL0mM9fB6RF7z/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/193Xno3LGx83ax70YP2L_j3S-px7pvqIR/view?usp=sharing), [Primario](https://drive.google.com/file/d/1940Y27GFJ8c0nYGSy90ceW-cANNd213F/view?usp=drive_link)
-- Expresión de SNCA: [Completo](https://drive.google.com/file/d/1a5Zd49GiC-7Tmx6PbFLWr7wJJyCxXvMC/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/191_a_KLDzVxIuZo_U4LEviVpC90601Fu/view?usp=sharing), [Primario](https://drive.google.com/file/d/19631KSQgKSQWgcFkfZjcMHY_sucblhEU/view?usp=drive_link)
-- Expresión de SNCB: [Completo](https://drive.google.com/file/d/1a022aZrwjb9qjcsStb7-v91JzaaYKsuw/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/191MqzDOEF_72bEun1-A8HTcl6V5Glc9G/view?usp=sharing), [Primario](https://drive.google.com/file/d/1967KRZD2NwVzci0as58eiMPe15RtlUqI/view?usp=drive_link)
-- Expresión de SNCG: [Completo](https://drive.google.com/file/d/1a62NceKzJ3jay8NCknTzt8Q0RpfkQiua/view?usp=sharing), [Metastasis](https://drive.google.com/file/d/190D_S5d3R1T0R7XMHVci7CnXQVhB5QnI/view?usp=sharing), [Primario](https://drive.google.com/file/d/196T3oDDSPgtTzFV1zwC4EcIPh26j0sQR/view?usp=drive_link)  
+- Expresión de Vav1: [Completo](https://drive.google.com/file/d/1lD2mM6bwc-qy3rDLO_6LKzTxWuu7GJh0/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/192uFvj194FxrqMJVtehVyiK9BKR9Fl0h/view?usp=sharing), [Primario](https://drive.google.com/file/d/196rG9jW5C2dLNsPQaKZ0lHXTw0Ryqfte/view?usp=sharing)
+- Expresión de Vav2: [Completo](https://drive.google.com/file/d/1qnTv26THS800Kk1iJ2pVtvGyAL8_VD0i/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/193WkZ8RZMG_E06MKXOIji40OYFCZJz8O/view?usp=sharing), [Primario](https://drive.google.com/file/d/197N6hMANlz0bSG6SmsfFwvDqRhvZ0tQO/view?usp=drive_link)
+- Expresión de Vav3: [Completo](https://drive.google.com/file/d/1VgkTZshyHJdtKzdBIJCHxhHHsdACR4Wj/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/193Xno3LGx83ax70YP2L_j3S-px7pvqIR/view?usp=sharing), [Primario](https://drive.google.com/file/d/1940Y27GFJ8c0nYGSy90ceW-cANNd213F/view?usp=drive_link)
+- Expresión de SNCA: [Completo]([https://drive.google.com/file/d/1a5Zd49GiC-7Tmx6PbFLWr7wJJyCxXvMC/view?usp=sharing](https://drive.google.com/file/d/1xZgsqepJ-sGsg7U-WCc3R3NeD8PWFnpD/view?usp=drive_link)), [Metastasis](https://drive.google.com/file/d/191_a_KLDzVxIuZo_U4LEviVpC90601Fu/view?usp=sharing), [Primario](https://drive.google.com/file/d/19631KSQgKSQWgcFkfZjcMHY_sucblhEU/view?usp=drive_link)
+- Expresión de SNCB: [Completo](https://drive.google.com/file/d/1wn2yCmyW5hb0RIRFRUaMs_NSq63_fOVB/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/191MqzDOEF_72bEun1-A8HTcl6V5Glc9G/view?usp=sharing), [Primario](https://drive.google.com/file/d/1967KRZD2NwVzci0as58eiMPe15RtlUqI/view?usp=drive_link)
+- Expresión de SNCG: [Completo](https://drive.google.com/file/d/1Uyk55i3dQ0sI6rs19CpxlNQASmowH95i/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/190D_S5d3R1T0R7XMHVci7CnXQVhB5QnI/view?usp=sharing), [Primario](https://drive.google.com/file/d/196T3oDDSPgtTzFV1zwC4EcIPh26j0sQR/view?usp=drive_link)  
 
 A continuación se muestra el resumen de las vías significaticas de cada contraste:  
 #### Vav1 Completo:
