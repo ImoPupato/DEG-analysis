@@ -102,7 +102,7 @@ Las salidas de GSEA de este análisis están disponibles en:
 - Expresión de SNCB: [Completo](https://drive.google.com/file/d/1wn2yCmyW5hb0RIRFRUaMs_NSq63_fOVB/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/191MqzDOEF_72bEun1-A8HTcl6V5Glc9G/view?usp=sharing), [Primario](https://drive.google.com/file/d/1967KRZD2NwVzci0as58eiMPe15RtlUqI/view?usp=drive_link)
 - Expresión de SNCG: [Completo](https://drive.google.com/file/d/1Uyk55i3dQ0sI6rs19CpxlNQASmowH95i/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/190D_S5d3R1T0R7XMHVci7CnXQVhB5QnI/view?usp=sharing), [Primario](https://drive.google.com/file/d/196T3oDDSPgtTzFV1zwC4EcIPh26j0sQR/view?usp=drive_link)  
 
-A continuación se muestra el resumen de las vías significaticas de cada contraste:  
+A continuación se muestra el resumen de las vías significaticas (FWER p-val<0.01) de cada contraste:  
 #### Vav1 Completo:
 <div align="center">
 	
