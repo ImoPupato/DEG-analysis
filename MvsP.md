@@ -90,7 +90,7 @@ El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo
 |Microambiente tumoral | 0.20 (2.36 x $10^{-10}$) |0.23 (1.08 x $10^{-10}$) | -0.017 (0.80)|
 |Puntuación Inmune| 0.19 (9.22 x $10^{-10}$) | 0.22 (2.31 x $10^{-10}$)|-0.021 (0.75)|
 
-### SNCA
+#### SNCA
 |Set de análisis| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
 |Microambiente tumoral | -0.16 (2.97 x $10^{-5}$) |-0.15 (2.97 x $10^{-5}$) | -0.15 (0.03)|
@@ -105,7 +105,7 @@ El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo
 #### SNCG
 |Set de análisis| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
-|Microambiente tumoral | 0.19 (4.81 x $10^{-10}$) |0.12 (0.08) | -0.038 (0.58)|
+|Microambiente tumoral | 0.19 (4.81 x $10^{-10}$) |0.22 (8.02 x $10^{-10}$) | -0.038 (0.58)|
 |Puntuación Inmune| 0.13 (3.02 x $10^{-5}$) | 0.15 (1.18 x $10^{-5}$)|-0.065 (0.34)|
 
 ### ORA
