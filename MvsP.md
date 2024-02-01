@@ -61,7 +61,7 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
 
 **Se llevaron adelante tres tipos de análisis: Correlación con perfil inmune, ORA y GSEA**. 
-#### Correlación con perfil inmune
+### Correlación con perfil inmune
 Se realizó un análisis de correlación utilizando la matriz inmune obtenida de [TIMER2.0](http://timer.comp-genomics.org/timer/)  
 
 **Ejemplo del código utilizado para la comparación**
@@ -75,8 +75,8 @@ El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo
 #### Vav1
 |Set de análisis| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
-|Microambiente tumoral | 0.78 (2.2 x $10^{-16}$) |0.80 (2.2 x $10^{-16}$) |
-|Puntuación Inmune| 0.76 (2.2 x $10^{-16}$) |  0.65 (2.2 x $10^{-16}$)|
+|Microambiente tumoral | 0.78 (2.2 x $10^{-16}$) |0.80 (2.2 x $10^{-16}$) | 0.65 (2.2 x $10^{-16}$)|
+|Puntuación Inmune| 0.76 (2.2 x $10^{-16}$) |  0.78 (2.2 x $10^{-16}$)| 0.65 (2.2 x $10^{-16}$)|
 
 #### Vav2
 |Set de análisis| Completo| Metastasis | Primario |
@@ -96,19 +96,19 @@ El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo
 |Microambiente tumoral | -0.16 (2.97 x $10^{-5}$) |-0.15 (2.97 x $10^{-5}$) | -0.15 (0.03)|
 |Puntuación Inmune| -0.11 (3.74 x $10^{-4}$) | -0.97 (6.07 x $10^{-3}$)|-0.095 (0.16)|
 
-### SNCB
+#### SNCB
 |Set de análisis| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
 |Microambiente tumoral | -0.077 (0.013) |-0.070 (0.049) | -0.038 (0.58)|
 |Puntuación Inmune| -0.084 (0.0069) | -0.073 (0.039)|-0.065 (0.34)|
 
-### SNCG
+#### SNCG
 |Set de análisis| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
 |Microambiente tumoral | 0.19 (4.81 x $10^{-10}$) |0.12 (0.08) | -0.038 (0.58)|
 |Puntuación Inmune| 0.13 (3.02 x $10^{-5}$) | 0.15 (1.18 x $10^{-5}$)|-0.065 (0.34)|
 
-#### ORA
+### ORA
 Primero se llevó adelante un análisis de la expresión diferencial para cada contraste, los resultados de los *exact tests* de comparación son los siguientes:
 - [Metástasis vs Primario](https://drive.google.com/file/d/1C4Guj3ZnUNzbCbqUPLPuF3dJgMLkn83N/view?usp=drive_link)
 - Expresión de Vav1: [Completo](https://drive.google.com/file/d/1CIADvX8z7qRZzBCFrVh-b1eSVgJxdLCg/view?usp=drive_link), [Metastasis](https://drive.google.com/file/d/19C5vIoan3DWFPivaBssyoBNwVNZlzAz8/view?usp=drive_link), [Primario](https://drive.google.com/file/d/19G1d4nvvGEkTxGfqmB-HXtMOHJ2_9nm_/view?usp=drive_link)
@@ -125,7 +125,7 @@ Los gráficos de enriquecimiento se encuentran en el siguiente [link](https://dr
   
 En el caso del contraste de expresión alta vs baja de SNCB para el grupo de muestras provenientes de tumores primarios, no se observaron vias eniquecidas por los genes diferencialmente expresados.
 
-#### GSEA
+### GSEA
 Se generaron las siguientes matrices:
 - [Matriz de expresión análisis Completo o MvsP](https://drive.google.com/file/d/1TE0wsNRsJk0JiLgzSH_G1ka6et60kKB_/view?usp=drive_link)
 - [Matriz de expresión análisis expresión de genes de interes en muestras provenientes de tejido tumoral metastásico](https://drive.google.com/file/d/1_ZK_z0lGFaCkXZgYe6DH6b2WYyKztE6t/view?usp=drive_link)
