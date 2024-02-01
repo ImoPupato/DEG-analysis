@@ -94,7 +94,7 @@ El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo
 |Set de análisis| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
 |Microambiente tumoral | -0.16 (2.97 x $10^{-5}$) |-0.15 (2.97 x $10^{-5}$) | -0.15 (0.03)|
-|Puntuación Inmune| -0.11 (3.74 x $10^{-4}$) | -0.97 (6.07 x $10^{-3}$)|-0.095 (0.16)|
+|Puntuación Inmune| -0.11 (3.74 x $10^{-4}$) | -0.097 (6.07 x $10^{-3}$)|-0.095 (0.16)|
 
 #### SNCB
 |Set de análisis| Completo| Metastasis | Primario |
