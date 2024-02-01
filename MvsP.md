@@ -70,7 +70,7 @@ library("corrplot")
 library("ggstatsplot")
 cor.test(Gene Expression,xCell Score, method="kendall") #Gene Expression corresponde al valor de expresión (*en cpm*) y xCell Score corresponde al valor proporcionado por TIMER2.0
 ```
-El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo de asociación lineal (inversa o directa) y fuerza (débil, moderada, fuerte). Entre paréntesis de indica el p-value correspondiente al análisis.  
+El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo de asociación lineal (inversa o directa) y fuerza (débil, moderada, fuerte). Entre paréntesis Se indica el p-value correspondiente al análisis.  
 
 #### Vav1
 |Set de análisis| Completo| Metastasis | Primario |
@@ -107,6 +107,9 @@ El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo
 |:-----------:|:--------:|:---------:|:-----------:|
 |Microambiente tumoral | 0.19 (4.81 x $10^{-10}$) |0.22 (8.02 x $10^{-10}$) | -0.038 (0.58)|
 |Puntuación Inmune| 0.13 (3.02 x $10^{-5}$) | 0.15 (1.18 x $10^{-5}$)|-0.065 (0.34)|
+
+A través del siguiente gráfico de correlación, podemos visualizar la fuerza de asociación entre los tipos celulares y cada expresión génica según set de análisis. Se utilizó la matriz correspondiente al algoritmo xCell:  
+|[Gráfico de correlación](https://github.com/ImoPupato/DEG-analysis/blob/main/Correlacion.jpg)
 
 ### ORA
 Primero se llevó adelante un análisis de la expresión diferencial para cada contraste, los resultados de los *exact tests* de comparación son los siguientes:
