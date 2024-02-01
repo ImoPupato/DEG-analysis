@@ -60,7 +60,19 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 </div> 
 Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
 
-**Se llevaron adelante tres tipos de análisis: Correlación con perfil inmune, ORA y GSEA**. 
+**Se llevaron adelante cuatro tipos de análisis: Sobrevida, Correlación con perfil inmune, ORA y GSEA**. 
+### Sobrevida
+Valores de corte (*en cpm*) correspondientes a un análisis con la función *surv_cutpoint* del paquete 'survminer'  
+
+ |Gen| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+VAV1| 7.72| 7.18 | 12.64 |
+VAV2| 57.48 | 57.55 | 6.27 |
+VAV3|  9.79 | 9.14 | 2.40 |
+SNCA| 94.80 |101.75|63.55 |
+SNCB|  0.034 |0.033|0.062 |
+SNCG|  3.39 |3.39|0.52 |
+
 ### Correlación con perfil inmune
 Se realizó un análisis de correlación utilizando la matriz inmune obtenida de [TIMER2.0](http://timer.comp-genomics.org/timer/)  
 
