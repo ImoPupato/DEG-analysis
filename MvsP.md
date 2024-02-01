@@ -30,7 +30,7 @@ Los valores de expresión de RNASeq están en *cuentas por millón* (cpm)
 	
 |Gen| IC 95% | $\overline{x}$ metastasis | $\overline{x}$ primario | p-value |
 |:---------------------------------:|:---------------------------------:|:---------------------------------:|:---------------------------------:|:---------------------------------:|
-|VAV1| 7.94 - 13.27 |17.41 | 6.80 |4.339 x $10^{-14}$|
+|VAV1| 7.94 - 13.27 |17.41 | 6.80 |4.34 x $10^{-14}$|
 |VAV2| 2.49 - 10.84 | 33.15 | 26.49 |0.0019 |
 |VAV3| 4.66 - 18.64 | 27.59 | 15.94 | 0.0012 |
 |SNCA| -30.90  - -3.47| 80.73 |  97.91 | 0.0143 |
@@ -60,7 +60,54 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 </div> 
 Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
 
-**Se llevaron adelante dos tipos de análisis: ORA y GSEA**. 
+**Se llevaron adelante tres tipos de análisis: Correlación con perfil inmune, ORA y GSEA**. 
+#### Correlación con perfil inmune
+Se realizó un análisis de correlación utilizando la matriz inmune obtenida de [TIMER2.0](http://timer.comp-genomics.org/timer/)  
+
+**Ejemplo del código utilizado para la comparación**
+```R
+library("corrplot")
+library("ggstatsplot")
+cor.test(Gene Expression,xCell Score, method="kendall") #Gene Expression corresponde al valor de expresión (*en cpm*) y xCell Score corresponde al valor proporcionado por TIMER2.0
+```
+El coeficiente utilizado es $\tau$, que varía entre -1 y 1 dependiendo del tipo de asociación lineal (inversa o directa) y fuerza (débil, moderada, fuerte). Entre paréntesis de indica el p-value correspondiente al análisis.  
+
+#### Vav1
+|Set de análisis| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+|Microambiente tumoral | 0.78 (2.2 x $10^{-16}$) |0.80 (2.2 x $10^{-16}$) |
+|Puntuación Inmune| 0.76 (2.2 x $10^{-16}$) |  0.65 (2.2 x $10^{-16}$)|
+
+#### Vav2
+|Set de análisis| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+|Microambiente tumoral | 0.027 (0.39) |0.018 (0.61) | -0.074 (0.28)|
+|Puntuación Inmune| -0.018 (0.56) | -0.033 (0.35)|-0.077 (0.26)|
+
+#### Vav3
+|Set de análisis| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+|Microambiente tumoral | 0.20 (2.36 x $10^{-10}$) |0.23 (1.08 x $10^{-10}$) | -0.017 (0.80)|
+|Puntuación Inmune| 0.19 (9.22 x $10^{-10}$) | 0.22 (2.31 x $10^{-10}$)|-0.021 (0.75)|
+
+### SNCA
+|Set de análisis| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+|Microambiente tumoral | -0.16 (2.97 x $10^{-5}$) |-0.15 (2.97 x $10^{-5}$) | -0.15 (0.03)|
+|Puntuación Inmune| -0.11 (3.74 x $10^{-4}$) | -0.97 (6.07 x $10^{-3}$)|-0.095 (0.16)|
+
+### SNCB
+|Set de análisis| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+|Microambiente tumoral | -0.077 (0.013) |-0.070 (0.049) | -0.038 (0.58)|
+|Puntuación Inmune| -0.084 (0.0069) | -0.073 (0.039)|-0.065 (0.34)|
+
+### SNCG
+|Set de análisis| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+|Microambiente tumoral | 0.19 (4.81 x $10^{-10}$) |0.12 (0.08) | -0.038 (0.58)|
+|Puntuación Inmune| 0.13 (3.02 x $10^{-5}$) | 0.15 (1.18 x $10^{-5}$)|-0.065 (0.34)|
+
 #### ORA
 Primero se llevó adelante un análisis de la expresión diferencial para cada contraste, los resultados de los *exact tests* de comparación son los siguientes:
 - [Metástasis vs Primario](https://drive.google.com/file/d/1C4Guj3ZnUNzbCbqUPLPuF3dJgMLkn83N/view?usp=drive_link)
