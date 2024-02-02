@@ -64,6 +64,8 @@ Para el caso del análisis *completo* cada grupo de expresión, alta y baja, que
 ### Sobrevida
 Valores de corte (*en cpm*) correspondientes a un análisis con la función *surv_cutpoint* del paquete 'survminer'  
 
+<div align="center">
+
  |Gen| Completo| Metastasis | Primario |
 |:-----------:|:--------:|:---------:|:-----------:|
 VAV1| 7.72| 7.18 | 12.64 |
@@ -72,7 +74,12 @@ VAV3|  9.79 | 9.14 | 2.40 |
 SNCA| 94.80 |101.75|63.55 |
 SNCB|  0.034 |0.033|0.062 |
 SNCG|  3.39 |3.39|0.52 |
+</div> 
 
+![Gráfica de sobrevida VAVs](https://github.com/ImoPupato/DEG-analysis/blob/main/Survival%20Plots%20VAVs.jpg)
+
+![Gráfica de sobrevida SNCs](https://github.com/ImoPupato/DEG-analysis/blob/main/Survival%20Plots%20SNCs.jpg)
+  
 ### Correlación con perfil inmune
 Se realizó un análisis de correlación utilizando la matriz inmune obtenida de [TIMER2.0](http://timer.comp-genomics.org/timer/)  
 
