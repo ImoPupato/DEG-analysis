@@ -59,7 +59,7 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 
 </div> 
 Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
-
+  
 **Se llevaron adelante cuatro tipos de análisis: Sobrevida, Correlación con perfil inmune, ORA y GSEA**. 
 
 ### Sobrevida
