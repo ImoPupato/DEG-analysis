@@ -132,6 +132,8 @@ SNCB|  0.76| 0.72| 0.9 |
 SNCG|  0.57 |0.49|0.34 |
 </div>
 
+Los gráficos de sobrevida se encuentran disponibles en el siguiente [link](https://drive.google.com/drive/folders/19djB74KAsd4JCnx_mTdGvvMeHQ7Jl0_Z?usp=sharing)
+  
 ### Correlación con perfil inmune
 Se realizó un análisis de correlación utilizando la matriz inmune obtenida de [TIMER2.0](http://timer.comp-genomics.org/timer/)  
 
