@@ -61,8 +61,24 @@ Tomando en cuenta los valores de corte, los grupos quedaron conformados según e
 Para el caso del análisis *completo* cada grupo de expresión, alta y baja, quedó conformado por 230 muestras.  
 
 **Se llevaron adelante cuatro tipos de análisis: Sobrevida, Correlación con perfil inmune, ORA y GSEA**. 
+
 ### Sobrevida
-Valores de corte (*en cpm*) correspondientes a un análisis con la función *surv_cutpoint* del paquete 'survminer'  
+Se determinaron los valores de corte (*en cpm*) óptimos correspondientes a un análisis con la función *surv_cutpoint* del paquete 'survminer'  
+
+**Ejemplo del código utilizado para la obtención de los valores de corte**
+```R
+library(survminer)  #carga de librería
+FenotiposP<-subset(Fenotipos,Type=="Primario") #selección de expresiones por fenotipo primario
+FenotiposM<-subset(Fenotipos,Type=="Metastasis")#selección de expresiones por fenotipo metastásico
+
+surv_rnaseq<-surv_cutpoint(
+  Fenotipos*, # * sería P o M según el análisis
+  time = "times", # tiempo al seguimiento
+  event = "status", # estado de sobrevida, 1 o 0
+  variables = c("VAV1.cpm","VAV2.cpm", "VAV3.cpm","SNCA.cpm","SNCB.cpm","SNCG.cpm")
+)
+summary(surv_rnaseq) # para extraer los valores de corte
+```
 
 <div align="center">
 
@@ -74,12 +90,48 @@ VAV3|  9.79 | 9.14 | 2.40 |
 SNCA| 94.80 |101.75|63.55 |
 SNCB|  0.034 |0.033|0.062 |
 SNCG|  3.39 |3.39|0.52 |
-</div> 
+</div>
+
+**Ejemplo del código utilizado para el gráfico**
+
+```
+library(survival)
+surv_rnaseq <- surv_categorize(surv_rnaseq)
+fit <- survfit(Surv(times, status) ~ *, # * sería cada gen de contraste
+               data = Fenotipos*) # * sería P o M según el análisis
+ggsurvplot(
+  fit,                     
+  risk.table = TRUE,       
+  pval = TRUE,             
+  conf.int = FALSE,                  
+  xlim = c(0,5500),      
+  break.time.by = 1000,    
+  ggtheme = theme_bw(), 
+  risk.table.y.text.col = T, 
+  font.legend=8, 
+  legend.title = "Expression",
+  risk.table.y.text = FALSE,                          
+)
+```
 
 ![Gráfica de sobrevida VAVs](https://github.com/ImoPupato/DEG-analysis/blob/main/Survival%20Plots%20VAVs.jpg)
 
 ![Gráfica de sobrevida SNCs](https://github.com/ImoPupato/DEG-analysis/blob/main/Survival%20Plots%20SNCs.jpg)
-  
+
+Se repitió el análisis anterior utilizando como valores de corte la mediana de cada una de las expresiones obteniendo los siguientes p-value:
+
+<div align="center">
+
+ |Gen| Completo| Metastasis | Primario |
+|:-----------:|:--------:|:---------:|:-----------:|
+VAV1| 0.0056| 0.0056 | 0.61 |
+VAV2| 0.9| 0.85 | 0.67 |
+VAV3|  0.0027 | 0.0018 | 0.67 |
+SNCA|  0.076 |0.064|0.22 |
+SNCB|  0.76| 0.72| 0.9 |
+SNCG|  0.57 |0.49|0.34 |
+</div>
+
 ### Correlación con perfil inmune
 Se realizó un análisis de correlación utilizando la matriz inmune obtenida de [TIMER2.0](http://timer.comp-genomics.org/timer/)  
 
